@@ -30,7 +30,7 @@ This example also shows how to deal with two special features provided by Game R
 
 
 <p align="center"> 
-<img width="720" alt="matchmaking" src="https://github.com/SmartFoxServer/SFS_MatchMaking_GD4/assets/30838007/c4821c51-4064-4473-80a9-b75da79a34cb">
+<img width="720" alt="tictactoe" src="https://github.com/SmartFoxServer/SFS_TicTacToe_GD4/assets/30838007/423390c0-3bfd-4d03-8aa8-72ebbe66ada6">
  </p>
 
 In this document we assume that you already went through the previous tutorials, where we explained the subdivision of the application into three scenes, how to create a GlobalManager class to share the connection to SmartFoxServer among scenes and how to implement the buddy list, the match-making logic and invitations.
@@ -57,11 +57,7 @@ The source code is provided under the SFS2X-TicTacToe-Ext/Java/src folder. You c
 ## Online Tutorial and Documentation
 The base code for this example is the same of the previous one, expanded to implement the new features.
 
-The LobbyManager and GameManager classes have been updated to add the logic related to the Game Room creation and join, and the logic to send invitations.
-
-<p align="center"> 
-<img width="720" alt="matchmaking" src="https://github.com/SmartFoxServer/SFS_MatchMaking_GD4/assets/30838007/ebbdeeb0-8914-44ea-a74a-beef6f636f0b">
- </p>
+The LobbyManager and GameManager classes have been updated to add the logic related to the Game Room creation and join, and the logic to send invitations. However, this code requires the server extension to be installed on the server system.
 
 To learn more about this template and how it is configured for establishing a connection and handling SmartFoxServer events, server externsions and turn based games, go to the online documentation and tutorials linked below.
 
