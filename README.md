@@ -63,7 +63,7 @@ The LobbyManager and GameManager classes have been updated to add the logic rela
 <img width="720" alt="matchmaking" src="https://github.com/SmartFoxServer/SFS_MatchMaking_GD4/assets/30838007/ebbdeeb0-8914-44ea-a74a-beef6f636f0b">
  </p>
 
-To learn more about this template and how it is configured for establishing a connection and handling basic SmartFoxServer events, go to the online documentation and tutorials linked below.
+To learn more about this template and how it is configured for establishing a connection and handling SmartFoxServer events, server externsions and turn based games, go to the online documentation and tutorials linked below.
 
 **SmartFoxServer Example Documentation**   
 
