@@ -17,7 +17,7 @@ Specifically, the examples will showcase:
 The Godot examples provided have been tested for exporting as native executables for Windows and macOS. At the time of writing this article (June 2023) Godot Mono does not yet support exporting for mobile platform or the browser.
 
 # SFS_TicTacToe_GD4
-he Tic-Tac-Toe example shows how to develop a full multiplayer turn-based game with Godot and SmartFoxServer 2X by implementing the well-known paper-and-pencil game for two players also known as Noughts and Crosses. In this game players take turns marking the spaces in a three-by-three grid with X or O; the player who succeeds in placing three of their marks in a horizontal, vertical or diagonal row is the winner.
+The Tic-Tac-Toe example shows how to develop a full multiplayer turn-based game with Godot and SmartFoxServer 2X by implementing the well-known paper-and-pencil game for two players also known as Noughts and Crosses. In this game players take turns marking the spaces in a three-by-three grid with X or O; the player who succeeds in placing three of their marks in a horizontal, vertical or diagonal row is the winner.
 
 The example expands the lobby application discussed in previous tutorials, to which we added the actual game assets and client logic updating the existing mock-up Game scene.
 
@@ -44,6 +44,16 @@ In order to setup and run the example, follow these steps:
 
 The client's C# code is in the Godot project's *res://scripts* folder, while the SmartFoxServer 2X client API DLLs are in the *res:// folder*.
 
+## Server-side Extension
+The server-side Extension is available in two versions: Java and JavaScript, and the game client expects the Java extension to be deployed. At the end of this article we also explain how to use the JavaScript version. Its is freely avaliable from the SmartFox Website for Download.
+
+http://www.smartfoxserver.com/download/get/316
+
+## Deploy the Java Extension
+Copy the TicTacToe/ folder from SFS2X-TicTacToe-Ext/deploy/ to your current SFS2X installation under SFS2X/extensions/ See the Online Documentation for more information on how to install SmartFoxServer on you machine and how to include extensions.
+
+The source code is provided under the SFS2X-TicTacToe-Ext/Java/src folder. You can create and setup a new project in your Java IDE of choice as described in the Writing the first Java Extension document of the Java Extensions Development section. Copy the content of the SFS2X-TicTacToe-Ext/Java/src folder to your Java project' source folder.
+
 ## Online Tutorial and Documentation
 The base code for this example is the same of the previous one, expanded to implement the new features.
 
@@ -60,11 +70,12 @@ To learn more about this template and how it is configured for establishing a co
 http://docs2x.smartfoxserver.com/ExamplesGodot/lobby-matchmaking
 
 This online documentation includes:
-* The updated user profile
-* Public and private games
-* Start a new game
-* Quick game join
-* Invitations
+* Client and Server Code
+* Creating the Game Room
+* Extension initialization
+* Game Start and Player Turns
+* Game over and restart
+* Using the JavaScript Extension
   
  and further **Resource Links**
 
