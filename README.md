@@ -67,7 +67,7 @@ To learn more about this template and how it is configured for establishing a co
 
 **SmartFoxServer Example Documentation**   
 
-http://docs2x.smartfoxserver.com/ExamplesGodot/lobby-matchmaking
+http://docs2x.smartfoxserver.com/ExamplesGodot/tic-tac-toe
 
 This online documentation includes:
 * Client and Server Code
