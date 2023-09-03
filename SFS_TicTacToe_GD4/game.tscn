@@ -1,0 +1,799 @@
+[gd_scene load_steps=33 format=3 uid="uid://cim77sh710e62"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_bc37a"]
+[ext_resource type="Texture2D" uid="uid://cpkjs7jsngpyo" path="res://images/background.jpg" id="2_hkr5i"]
+[ext_resource type="Texture2D" uid="uid://cihiay168twy4" path="res://images/footer-bg.png" id="2_nv8ul"]
+[ext_resource type="Texture2D" uid="uid://djsn52q7i4mxo" path="res://images/logo-sfs.png" id="3_dsjlc"]
+[ext_resource type="Texture2D" uid="uid://cu2o68uutnxyl" path="res://images/buttonNormal.png" id="4_rllet"]
+[ext_resource type="Texture2D" uid="uid://bn6drg0urf1il" path="res://images/buttonPressed.png" id="5_31fro"]
+[ext_resource type="Script" path="res://scripts/TextureButtonScript.cs" id="6_0wl6q"]
+[ext_resource type="FontFile" uid="uid://swky6glti8em" path="res://fonts/BebasNeue-Regular.ttf" id="7_nqh0q"]
+[ext_resource type="FontFile" uid="uid://q4tvl3dc7vp" path="res://fonts/ARIAL.TTF" id="8_ehrfi"]
+[ext_resource type="FontFile" uid="uid://b11qhqw5ioane" path="res://fonts/ARIALBD.TTF" id="9_gmff7"]
+[ext_resource type="FontFile" uid="uid://cmxyp6cxu6apc" path="res://fonts/ARIALI.TTF" id="10_rstih"]
+[ext_resource type="Script" path="res://scripts/PlayerTag.cs" id="12_44r05"]
+[ext_resource type="Texture2D" uid="uid://boao3jqvr5vmq" path="res://images/grid.png" id="12_wbkl1"]
+[ext_resource type="FontFile" uid="uid://qovh767e8xev" path="res://fonts/EraserDust.ttf" id="13_6ruye"]
+[ext_resource type="Texture2D" uid="uid://ci4aecbxkl25l" path="res://images/icons/dismiss.png" id="13_j7mmf"]
+[ext_resource type="Texture2D" uid="uid://x8oce3uhvrcl" path="res://images/add-button.png" id="14_a61x8"]
+[ext_resource type="Texture2D" uid="uid://0lmwofgshl7g" path="res://images/restart-button.png" id="15_canbe"]
+[ext_resource type="Texture2D" uid="uid://bd5mmuaar3j8u" path="res://images/join-button.png" id="16_srtg7"]
+[ext_resource type="Script" path="res://scripts/TicTacToeGame.cs" id="17_e1vnr"]
+[ext_resource type="Script" path="res://scripts/GameBoard.cs" id="18_pfl22"]
+[ext_resource type="Texture2D" uid="uid://0luatu66a134" path="res://images/blank.png" id="21_e84c1"]
+[ext_resource type="Texture2D" uid="uid://c8wco6r066lgd" path="res://images/X.png" id="22_6a06r"]
+[ext_resource type="Texture2D" uid="uid://c8lgeqx7sss55" path="res://images/O.png" id="23_c26n5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f2fah"]
+font = ExtResource("8_ehrfi")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_euh7b"]
+font = ExtResource("7_nqh0q")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ja4yq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1y2a"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiek8"]
+font = ExtResource("13_6ruye")
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fkcu"]
+font = ExtResource("13_6ruye")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_qquyw"]
+line_spacing = 1.0
+font = ExtResource("7_nqh0q")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w3aup"]
+font = ExtResource("8_ehrfi")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_erw3l"]
+font = ExtResource("8_ehrfi")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Control" node_paths=PackedStringArray("gameManager", "messageInput", "chatTextArea", "leavePopup")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bc37a")
+gameManager = NodePath("BackGround/TicTacToeGame")
+messageInput = NodePath("BackGround/GameChat/Message Input")
+chatTextArea = NodePath("BackGround/GameChat/RichTextLabel")
+leavePopup = NodePath("Leave Panel")
+
+[node name="BackGround" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.603922, 0, 1)
+
+[node name="Background" type="Sprite2D" parent="BackGround"]
+position = Vector2(728, 380)
+scale = Vector2(1, 1.04444)
+texture = ExtResource("2_hkr5i")
+
+[node name="Footer" type="TextureRect" parent="BackGround"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_nv8ul")
+expand_mode = 5
+
+[node name="SFSLogo" type="TextureRect" parent="BackGround/Footer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.739736
+anchor_top = 0.10874
+anchor_right = 0.988
+anchor_bottom = 0.822679
+offset_left = 0.739746
+offset_top = 12.6326
+offset_right = 0.983643
+offset_bottom = 12.6666
+texture = ExtResource("3_dsjlc")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Leave Game Button" type="TextureButton" parent="BackGround/Footer" node_paths=PackedStringArray("button", "scriptNode")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.312
+anchor_right = 0.194
+anchor_bottom = 0.844
+offset_left = -0.548002
+offset_top = -0.158001
+offset_right = -0.136017
+offset_bottom = -0.171005
+grow_vertical = 0
+texture_normal = ExtResource("4_rllet")
+texture_pressed = ExtResource("5_31fro")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../..")
+callbackName = "OnLeaveButtonClick"
+
+[node name="Label" type="Label" parent="BackGround/Footer/Leave Game Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.833
+offset_top = 2.0
+offset_right = -7.29199
+offset_bottom = 10.1268
+text = "Leave Game"
+label_settings = SubResource("LabelSettings_f2fah")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameChat" type="ColorRect" parent="BackGround"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.665
+anchor_top = 0.039
+anchor_right = 0.981
+anchor_bottom = 0.867
+offset_left = -0.26001
+offset_top = 0.331999
+offset_right = -0.564087
+offset_bottom = -0.00402832
+color = Color(0.85098, 0.509804, 0, 1)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="BackGround/GameChat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.00012207
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="Label" type="Label" parent="BackGround/GameChat"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.982
+anchor_bottom = 0.155
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -15.792
+offset_bottom = -8.16
+text = "Game Chat"
+label_settings = SubResource("LabelSettings_euh7b")
+
+[node name="Line2D" type="Line2D" parent="BackGround/GameChat"]
+position = Vector2(28.2368, 107)
+scale = Vector2(0.636, 1.5)
+points = PackedVector2Array(-4, 0, 96.2869, 0, 636, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackGround/GameChat"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.088
+anchor_top = 0.202
+anchor_right = 0.93
+anchor_bottom = 0.857
+offset_left = -0.127991
+offset_top = 0.256012
+offset_right = -0.0799255
+offset_bottom = 0.0960083
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("8_ehrfi")
+theme_override_fonts/bold_font = ExtResource("9_gmff7")
+theme_override_fonts/italics_font = ExtResource("10_rstih")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+scroll_following = true
+
+[node name="Line2D2" type="Line2D" parent="BackGround/GameChat"]
+position = Vector2(26.2368, 604)
+scale = Vector2(0.636, 1.5)
+points = PackedVector2Array(-4, 0, 636, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Message Input" type="LineEdit" parent="BackGround/GameChat"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_ja4yq")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = 280.0
+offset_right = 100.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.270588)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_ehrfi")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_o1y2a")
+placeholder_text = " Your Message"
+caret_blink = true
+
+[node name="Send Button" type="TextureButton" parent="BackGround/GameChat" node_paths=PackedStringArray("button", "scriptNode")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.754
+anchor_top = 0.915
+anchor_right = 0.947
+anchor_bottom = 0.976
+offset_left = 0.175995
+offset_top = 1.12
+offset_right = 0.167999
+offset_bottom = 8.12793
+grow_vertical = 0
+texture_normal = ExtResource("4_rllet")
+texture_pressed = ExtResource("5_31fro")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../..")
+callbackName = "OnSendButtonClick"
+
+[node name="Label" type="Label" parent="BackGround/GameChat/Send Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.833
+offset_bottom = 8.01605
+text = "Send"
+label_settings = SubResource("LabelSettings_f2fah")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game Player Canvas" type="Control" parent="BackGround"]
+layout_mode = 1
+anchor_right = 0.194
+anchor_bottom = 0.897
+offset_right = -0.136017
+offset_bottom = -0.364014
+
+[node name="PlayerTag1" type="Control" parent="BackGround/Game Player Canvas" node_paths=PackedStringArray("label", "playerName", "winsValue", "addBuddyButton")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_44r05")
+label = NodePath("Player1Label")
+playerName = NodePath("Player1Name")
+winsValue = NodePath("Player1Wins")
+addBuddyButton = NodePath("Player1Buddy")
+
+[node name="Player1Label" type="Label" parent="BackGround/Game Player Canvas/PlayerTag1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_right = 0.971
+anchor_bottom = 0.077
+offset_left = 21.72
+offset_top = 16.0
+offset_right = 88.16
+offset_bottom = 51.92
+text = "Player"
+label_settings = SubResource("LabelSettings_eiek8")
+
+[node name="Player1Name" type="Label" parent="BackGround/Game Player Canvas/PlayerTag1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.086
+anchor_top = 0.088
+anchor_right = 0.971
+anchor_bottom = 0.143
+offset_left = 20.56
+offset_top = 52.48
+offset_right = 219.16
+offset_bottom = 96.28
+text = "Player Name"
+label_settings = SubResource("LabelSettings_1fkcu")
+
+[node name="Player1Wins" type="Label" parent="BackGround/Game Player Canvas/PlayerTag1"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_top = 0.165
+anchor_right = 0.971
+anchor_bottom = 0.229
+offset_left = 21.72
+offset_top = 101.4
+offset_right = 85.16
+offset_bottom = 137.84
+text = "Wins: 0"
+label_settings = SubResource("LabelSettings_eiek8")
+
+[node name="Player1Buddy" type="TextureButton" parent="BackGround/Game Player Canvas/PlayerTag1" node_paths=PackedStringArray("button", "scriptNode")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_top = 0.253
+anchor_right = 0.943
+anchor_bottom = 0.33
+offset_left = 21.72
+offset_top = 144.88
+offset_right = 242.28
+offset_bottom = 199.8
+texture_normal = ExtResource("14_a61x8")
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../../TicTacToeGame")
+callbackName = "OnAddPlayer1AsBuddyClick"
+
+[node name="PlayerTag2" type="Control" parent="BackGround/Game Player Canvas" node_paths=PackedStringArray("label", "playerName", "winsValue", "addBuddyButton")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_44r05")
+label = NodePath("Player2Label")
+playerName = NodePath("Player2Name")
+winsValue = NodePath("Player2Wins")
+addBuddyButton = NodePath("Player2Buddy")
+
+[node name="Player2Label" type="Label" parent="BackGround/Game Player Canvas/PlayerTag2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_right = 0.971
+anchor_bottom = 0.077
+offset_left = 16.72
+offset_top = 530.0
+offset_right = 83.16
+offset_bottom = 565.92
+text = "Player"
+label_settings = SubResource("LabelSettings_eiek8")
+
+[node name="Player2Name" type="Label" parent="BackGround/Game Player Canvas/PlayerTag2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.086
+anchor_top = 0.088
+anchor_right = 0.971
+anchor_bottom = 0.143
+offset_left = 12.56
+offset_top = 566.48
+offset_right = 211.16
+offset_bottom = 610.28
+text = "Player Name"
+label_settings = SubResource("LabelSettings_1fkcu")
+
+[node name="Player2Wins" type="Label" parent="BackGround/Game Player Canvas/PlayerTag2"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_top = 0.165
+anchor_right = 0.971
+anchor_bottom = 0.229
+offset_left = 13.72
+offset_top = 615.4
+offset_right = 77.16
+offset_bottom = 651.84
+text = "Wins: 0"
+label_settings = SubResource("LabelSettings_eiek8")
+
+[node name="Player2Buddy" type="TextureButton" parent="BackGround/Game Player Canvas/PlayerTag2" node_paths=PackedStringArray("button", "scriptNode")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_top = 0.253
+anchor_right = 0.943
+anchor_bottom = 0.33
+offset_left = 13.72
+offset_top = 653.88
+offset_right = 234.28
+offset_bottom = 708.8
+texture_normal = ExtResource("14_a61x8")
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../../TicTacToeGame")
+callbackName = "OnAddPlayer2AsBuddyClick"
+
+[node name="Game State Text" type="Label" parent="BackGround/Game Player Canvas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.086
+anchor_top = 0.33
+anchor_right = 1.143
+anchor_bottom = 0.527
+offset_left = -8.08
+offset_top = -16.24
+offset_right = -0.0400085
+offset_bottom = 0.343994
+text = "Waiting for 
+Players"
+label_settings = SubResource("LabelSettings_1fkcu")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Restart" type="TextureButton" parent="BackGround/Game Player Canvas" node_paths=PackedStringArray("button", "scriptNode")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.086
+anchor_top = 0.527
+anchor_right = 0.971
+anchor_bottom = 0.615
+offset_left = -8.08
+offset_top = 2.34399
+offset_right = 0.119965
+offset_bottom = -1.72
+texture_normal = ExtResource("15_canbe")
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../TicTacToeGame")
+callbackName = "OnRestartButtonClick"
+
+[node name="Join" type="TextureButton" parent="BackGround/Game Player Canvas" node_paths=PackedStringArray("button", "scriptNode")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.626
+anchor_right = 0.971
+anchor_bottom = 0.707
+offset_left = 7.88
+offset_top = 1.27197
+offset_right = 0.119965
+offset_bottom = 0.304016
+texture_normal = ExtResource("16_srtg7")
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../TicTacToeGame")
+callbackName = "OnJoinButtonClick"
+
+[node name="TicTacToeGame" type="Control" parent="BackGround" node_paths=PackedStringArray("playerTag1", "playerTag2", "board", "stateText", "restartButton", "joinButton")]
+layout_mode = 1
+anchor_right = 0.659
+anchor_bottom = 0.906
+offset_left = 304.0
+offset_right = -7.59595
+offset_bottom = -7.672
+script = ExtResource("17_e1vnr")
+playerTag1 = NodePath("../Game Player Canvas/PlayerTag1")
+playerTag2 = NodePath("../Game Player Canvas/PlayerTag2")
+board = NodePath("Game Board")
+stateText = NodePath("../Game Player Canvas/Game State Text")
+restartButton = NodePath("../Game Player Canvas/Restart")
+joinButton = NodePath("../Game Player Canvas/Join")
+
+[node name="Game Board" type="Control" parent="BackGround/TicTacToeGame" node_paths=PackedStringArray("TicTacToeGameNode", "Slot1_1", "Slot1_2", "Slot1_3", "Slot2_1", "Slot2_2", "Slot2_3", "Slot3_1", "Slot3_2", "Slot3_3")]
+anchors_preset = 0
+offset_left = -26.0
+offset_top = 34.0
+offset_right = 638.0
+offset_bottom = 706.0
+script = ExtResource("18_pfl22")
+TicTacToeGameNode = NodePath("..")
+Slot1_1 = NodePath("Slot 1-1")
+Slot1_2 = NodePath("Slot 1-2")
+Slot1_3 = NodePath("Slot 1-3")
+Slot2_1 = NodePath("Slot 2-1")
+Slot2_2 = NodePath("Slot 2-2")
+Slot2_3 = NodePath("Slot 2-3")
+Slot3_1 = NodePath("Slot 3-1")
+Slot3_2 = NodePath("Slot 3-2")
+Slot3_3 = NodePath("Slot 3-3")
+sprite0 = ExtResource("21_e84c1")
+sprite1 = ExtResource("22_6a06r")
+sprite2 = ExtResource("23_c26n5")
+
+[node name="Grid" type="Sprite2D" parent="BackGround/TicTacToeGame/Game Board"]
+position = Vector2(328, 352)
+rotation = 0.185005
+scale = Vector2(0.810256, 0.8)
+texture = ExtResource("12_wbkl1")
+
+[node name="Slot 1-1" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 49.848
+offset_top = -14.456
+offset_right = 34.048
+offset_bottom = -27.48
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 1-2" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 258.848
+offset_top = 22.544
+offset_right = 243.048
+offset_bottom = 9.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 1-3" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 459.848
+offset_top = 59.544
+offset_right = 444.048
+offset_bottom = 46.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 2-1" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 11.848
+offset_top = 191.544
+offset_right = -3.952
+offset_bottom = 178.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 2-2" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 220.848
+offset_top = 228.544
+offset_right = 205.048
+offset_bottom = 215.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 2-3" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 421.848
+offset_top = 265.544
+offset_right = 406.048
+offset_bottom = 252.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 3-1" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = -18.152
+offset_top = 387.544
+offset_right = -33.952
+offset_bottom = 374.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 3-2" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 180.848
+offset_top = 418.544
+offset_right = 165.048
+offset_bottom = 405.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Slot 3-3" type="TextureButton" parent="BackGround/TicTacToeGame/Game Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.023
+anchor_right = 0.393
+anchor_bottom = 0.34
+offset_left = 392.848
+offset_top = 459.544
+offset_right = 377.048
+offset_bottom = 446.52
+rotation = 0.174533
+texture_normal = ExtResource("21_e84c1")
+texture_disabled = ExtResource("21_e84c1")
+
+[node name="Leave Panel" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -130.0
+offset_right = 300.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Leave Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -130.0
+offset_right = 301.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 4.0
+editor_only = false
+
+[node name="BackGround" type="ColorRect" parent="Leave Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -130.0
+offset_right = 300.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85098, 0.509804, 0, 1)
+
+[node name="popupTitle" type="Label" parent="Leave Panel/BackGround"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 279.0
+offset_bottom = 93.0
+text = "Time to Go?"
+label_settings = SubResource("LabelSettings_qquyw")
+
+[node name="popupTitle2" type="Label" parent="Leave Panel/BackGround"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 28.0
+offset_top = 101.0
+offset_right = 596.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("8_ehrfi")
+text = "No other player joined this game; do you want to leave and try again?"
+label_settings = SubResource("LabelSettings_w3aup")
+autowrap_mode = 3
+
+[node name="closePopupButton" type="TextureButton" parent="Leave Panel/BackGround" node_paths=PackedStringArray("button", "scriptNode")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture_normal = ExtResource("13_j7mmf")
+stretch_mode = 0
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../..")
+callbackName = "OnLeavePanelHide"
+
+[node name="Line2D" type="Line2D" parent="Leave Panel/BackGround"]
+position = Vector2(40.1745, 88.5)
+scale = Vector2(0.834891, -0.5)
+points = PackedVector2Array(-4, 0, 636, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Leave Game Button" type="TextureButton" parent="Leave Panel/BackGround" node_paths=PackedStringArray("button", "scriptNode")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.312
+anchor_right = 0.194
+anchor_bottom = 0.844
+offset_left = 105.8
+offset_top = 107.88
+offset_right = 345.6
+offset_bottom = 31.56
+grow_vertical = 0
+texture_normal = ExtResource("4_rllet")
+texture_pressed = ExtResource("5_31fro")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_0wl6q")
+button = NodePath(".")
+scriptNode = NodePath("../../..")
+callbackName = "OnLeaveButtonClick"
+
+[node name="Label" type="Label" parent="Leave Panel/BackGround/Leave Game Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.903
+offset_top = 8.0
+offset_right = -2.0
+offset_bottom = 0.0139694
+text = "Leave Game"
+label_settings = SubResource("LabelSettings_erw3l")
+horizontal_alignment = 1
+vertical_alignment = 1
