@@ -17,14 +17,23 @@ Specifically, the examples will showcase:
 The Godot examples provided have been tested for exporting as native executables for Windows and macOS. At the time of writing this article (June 2023) Godot Mono does not yet support exporting for mobile platform or the browser.
 
 # SFS_TicTacToe_GD4
-This example expands those described in the Lobby: Basics and Lobby: Buddies tutorials by adding a match-making system, to help users find the right Game Room to join based on their skill, and invitations, to let friends meet and play with each other.
+he Tic-Tac-Toe example shows how to develop a full multiplayer turn-based game with Godot and SmartFoxServer 2X by implementing the well-known paper-and-pencil game for two players also known as Noughts and Crosses. In this game players take turns marking the spaces in a three-by-three grid with X or O; the player who succeeds in placing three of their marks in a horizontal, vertical or diagonal row is the winner.
 
-In this document we assume that you already went through the previous tutorials, where we explained the subdivision of the application into three scenes, how to create a GlobalManager class to share the connection to SmartFoxServer among scenes and how to implement and manage a buddy list.
+The example expands the lobby application discussed in previous tutorials, to which we added the actual game assets and client logic updating the existing mock-up Game scene.
+
+This example features a server-side Extension which implements the main game logic: it determines if the game should start or stop, validates the player moves, updates the spectators if they join a game already in progress, checks if the victory condition is met, etc.
+Using a server-side Extension — or, in other words, having an authoritative server — is a more flexible and secure option with respect to keeping all the game logic on the client-side only. Even if SmartFoxServer provides powerful tools for developing application logic on the client, this approach can be limiting when your games start getting more complex. Additionally, keeping the game state on the server-side allows overall better security from hacking or cheating attempts.
+The server-side Extension is dynamically attached to the SFSGame Room when created; it updates the game state and sends game-related events back to the Godot client, which in turn updates the Game scene accordingly.
+
+This example also shows how to deal with two special features provided by Game Rooms: player indexes and spectators. Each user joining a Game Room is automatically assigned a unique player index which facilitates the tasks of starting and stopping the game, determining whose turn is it, etc. Spectators instead can replace players when they leave, by means of a dedicated client request.
+
+
 
 <p align="center"> 
 <img width="720" alt="matchmaking" src="https://github.com/SmartFoxServer/SFS_MatchMaking_GD4/assets/30838007/c4821c51-4064-4473-80a9-b75da79a34cb">
  </p>
 
+In this document we assume that you already went through the previous tutorials, where we explained the subdivision of the application into three scenes, how to create a GlobalManager class to share the connection to SmartFoxServer among scenes and how to implement the buddy list, the match-making logic and invitations.
 
 ## Setup & run
 In order to setup and run the example, follow these steps:
